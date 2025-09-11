@@ -70,7 +70,7 @@ def get_model_response(client, provider, messages):
             # OpenAI and Groq use a similar message format
             chat_completion = client.chat.completions.create(
                 messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
-                model="openai/gpt-oss-20b" if provider == "openai" else "llama3-8b-8192",
+                model="llama-3.1-8b-instant" if provider == "openai" else "llama3-8b-8192",
             )
             return chat_completion.choices[0].message.content
         elif provider == "anthropic":
